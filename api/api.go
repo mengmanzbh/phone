@@ -11,7 +11,7 @@ import (
 const APPKEY = "f17e30d841c5b17dbc00605a556d549a" //您申请的APPKEY
 // 检测手机号码是否能充值
 func Telcheck(ctx *gin.Context) {
-
+    //获取请求参数
 	phoneno := ctx.PostForm("phoneno")
     //请求地址
     juheURL :="http://op.juhe.cn/ofpay/mobile/telcheck"
@@ -43,8 +43,8 @@ func Telcheck(ctx *gin.Context) {
             })
 
         }else{
-           ctx.JSON(200, gin.H{
-            "code": "200",
+           ctx.JSON(400, gin.H{
+            "code": "400",
             "message": netReturn["reason"],
             })
 
