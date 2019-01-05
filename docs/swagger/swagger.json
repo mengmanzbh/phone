@@ -62,28 +62,28 @@
                 }
             }
         },
-        "/testapi/get-string-by-int/{some_id}": {
-            "get": {
-                "description": "get string by ID",
+        "/phoneapi/Telcheck": {
+            "post": {
+                "description": "检查手机号码是否能充值",
                 "consumes": [
                     "application/json"
                 ],
                 "produces": [
                     "application/json"
                 ],
-                "summary": "Add a new pet to the store",
-                "operationId": "get-string-by-int",
+                "summary": "检测手机号码是否能充值",
+                "operationId": "phoneno",
                 "parameters": [
                     {
                         "type": "integer",
-                        "description": "Some ID",
-                        "name": "some_id",
+                        "description": "phoneno",
+                        "name": "phoneno",
                         "in": "path",
                         "required": true
                     },
                     {
-                        "description": "Some ID",
-                        "name": "some_id",
+                        "description": "cardnum",
+                        "name": "cardnum",
                         "in": "body",
                         "required": true,
                         "schema": {
@@ -94,23 +94,15 @@
                 ],
                 "responses": {
                     "200": {
-                        "description": "ok",
+                        "description": "手机可以充值",
                         "schema": {
                             "type": "string"
                         }
                     },
                     "400": {
-                        "description": "We need ID!",
+                        "description": "手机号码必须输入",
                         "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/web.APIError"
-                        }
-                    },
-                    "404": {
-                        "description": "Can not find ID",
-                        "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/web.APIError"
+                            "type": "string"
                         }
                     }
                 }

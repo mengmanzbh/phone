@@ -93,21 +93,21 @@ paths:
             $ref: '#/definitions/web.APIError'
             type: object
       summary: Upload file
-  /testapi/get-string-by-int/{some_id}:
-    get:
+  /phoneapi/Telcheck:
+    post:
       consumes:
       - application/json
-      description: get string by ID
-      operationId: get-string-by-int
+      description: 检查手机号码是否能充值
+      operationId: phoneno
       parameters:
-      - description: Some ID
+      - description: phoneno
         in: path
-        name: some_id
+        name: phoneno
         required: true
         type: integer
-      - description: Some ID
+      - description: cardnum
         in: body
-        name: some_id
+        name: cardnum
         required: true
         schema:
           $ref: '#/definitions/web.Pet'
@@ -116,20 +116,14 @@ paths:
       - application/json
       responses:
         "200":
-          description: ok
+          description: 手机可以充值
           schema:
             type: string
         "400":
-          description: We need ID!
+          description: 手机号码必须输入
           schema:
-            $ref: '#/definitions/web.APIError'
-            type: object
-        "404":
-          description: Can not find ID
-          schema:
-            $ref: '#/definitions/web.APIError'
-            type: object
-      summary: Add a new pet to the store
+            type: string
+      summary: 检测手机号码是否能充值
   /testapi/get-struct-array-by-string/{some_id}:
     get:
       consumes:
