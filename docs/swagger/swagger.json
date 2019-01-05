@@ -71,25 +71,20 @@
                 "produces": [
                     "application/json"
                 ],
-                "summary": "检测手机号码是否能充值",
-                "operationId": "phoneno",
                 "parameters": [
                     {
-                        "type": "integer",
+                        "type": "string",
                         "description": "phoneno",
                         "name": "phoneno",
                         "in": "path",
                         "required": true
                     },
                     {
-                        "description": "cardnum",
-                        "name": "cardnum",
-                        "in": "body",
-                        "required": true,
-                        "schema": {
-                            "type": "object",
-                            "$ref": "#/definitions/web.Pet"
-                        }
+                        "type": "string",
+                        "description": "phoneno",
+                        "name": "phoneno",
+                        "in": "path",
+                        "required": true
                     }
                 ],
                 "responses": {
@@ -181,43 +176,6 @@
                 }
             }
         },
-        "web.Pet": {
-            "type": "object",
-            "properties": {
-                "category": {
-                    "type": "object",
-                    "properties": {
-                        "id": {
-                            "type": "integer"
-                        },
-                        "name": {
-                            "type": "string"
-                        }
-                    }
-                },
-                "id": {
-                    "type": "integer"
-                },
-                "name": {
-                    "type": "string"
-                },
-                "photoUrls": {
-                    "type": "array",
-                    "items": {
-                        "type": "string"
-                    }
-                },
-                "status": {
-                    "type": "string"
-                },
-                "tags": {
-                    "type": "array",
-                    "items": {
-                        "$ref": "#/definitions/web.Tag"
-                    }
-                }
-            }
-        },
         "web.RevValue": {
             "type": "object",
             "properties": {
@@ -229,17 +187,6 @@
                 },
                 "status": {
                     "type": "boolean"
-                }
-            }
-        },
-        "web.Tag": {
-            "type": "object",
-            "properties": {
-                "id": {
-                    "type": "integer"
-                },
-                "name": {
-                    "type": "string"
                 }
             }
         }

@@ -9,30 +9,6 @@ definitions:
       errorMessage:
         type: string
     type: object
-  web.Pet:
-    properties:
-      category:
-        properties:
-          id:
-            type: integer
-          name:
-            type: string
-        type: object
-      id:
-        type: integer
-      name:
-        type: string
-      photoUrls:
-        items:
-          type: string
-        type: array
-      status:
-        type: string
-      tags:
-        items:
-          $ref: '#/definitions/web.Tag'
-        type: array
-    type: object
   web.RevValue:
     properties:
       data:
@@ -41,13 +17,6 @@ definitions:
         type: integer
       status:
         type: boolean
-    type: object
-  web.Tag:
-    properties:
-      id:
-        type: integer
-      name:
-        type: string
     type: object
 host: petstore.swagger.io
 info:
@@ -98,20 +67,17 @@ paths:
       consumes:
       - application/json
       description: 检查手机号码是否能充值
-      operationId: phoneno
       parameters:
       - description: phoneno
         in: path
         name: phoneno
         required: true
-        type: integer
-      - description: cardnum
-        in: body
-        name: cardnum
+        type: string
+      - description: phoneno
+        in: path
+        name: phoneno
         required: true
-        schema:
-          $ref: '#/definitions/web.Pet'
-          type: object
+        type: string
       produces:
       - application/json
       responses:
@@ -123,7 +89,6 @@ paths:
           description: 手机号码必须输入
           schema:
             type: string
-      summary: 检测手机号码是否能充值
   /testapi/get-struct-array-by-string/{some_id}:
     get:
       consumes:
