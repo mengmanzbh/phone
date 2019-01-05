@@ -22,7 +22,6 @@ func Telcheck(ctx *gin.Context) {
     param.Set("cardnum","5") //充值金额,目前可选：5、10、20、30、50、100、300
     param.Set("key",APPKEY) //应用APPKEY(应用详细页查询)
  
- 
     //发送请求
     data,err:=Post(juheURL,param)
     if err!=nil{
@@ -36,7 +35,7 @@ func Telcheck(ctx *gin.Context) {
         json.Unmarshal(data,&netReturn)
         if netReturn["error_code"].(float64)==0{
             fmt.Printf("接口返回reason字段是:\r\n%v",netReturn["reason"])
-
+            //返回给前端
             ctx.JSON(200, gin.H{
             "code": "200",
             "message": netReturn["reason"],
