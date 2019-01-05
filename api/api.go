@@ -27,10 +27,10 @@ func Telcheck(ctx *gin.Context) {
 	    key := ctx.PostForm("key")
 
         ctx.JSON(200, gin.H{
-            "status":  "posted",
+            "status": "posted",
             "phoneno": phoneno,
-            "cardnum":    cardnum,
-            "key":    key,
+            "cardnum": cardnum,
+            "key":key,
         })
 
 }
