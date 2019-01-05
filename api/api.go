@@ -24,8 +24,8 @@ func GetStringByInt(ctx *gin.Context) {
 	n, _ := c.Request.Body.Read(buf)
 	fmt.Println(string(buf[0:n]))
 
-	// data, _ := ioutil.ReadAll(ctx.Request.Body)
-	// newdata := string(data)
+	data, _ := ioutil.ReadAll(ctx.Request.Body)
+	newdata := string(data)
 	fmt.Printf("v1 type:%T\n", newdata)
     fmt.Printf("ctx.Request.body: %v", newdata)
 	// ctx.JSON(http.StatusOK, string(data))
