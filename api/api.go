@@ -24,7 +24,10 @@ func GetStringByInt(ctx *gin.Context) {
 	newdata := string(data)
 	fmt.Printf("v1 type:%T\n", newdata)
     fmt.Printf("ctx.Request.body: %v", newdata)
-	ctx.JSON(http.StatusOK, string(data))
+	// ctx.JSON(http.StatusOK, string(data))
+	ctx.JSON(200, gin.H{
+            "message": "pong",
+        })
 }
 
 // @Description get struct array by ID
