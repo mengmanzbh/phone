@@ -28,8 +28,9 @@ func Telcheck(ctx *gin.Context) {
 
         ctx.JSON(200, gin.H{
             "status":  "posted",
-            "message": phoneno,
-            "nick":    cardnum,
+            "phoneno": phoneno,
+            "cardnum":    cardnum,
+            "key":    key,
         })
 
 }
