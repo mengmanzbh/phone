@@ -3,6 +3,8 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
+	"fmt"
+	"io/ioutil"
 )
 
 // @Summary Add a new pet to the store
