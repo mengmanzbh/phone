@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"fmt"
 	"io/ioutil"
-	"github.com/op/go-logging"
 )
 
 // @Summary Add a new pet to the store
@@ -21,17 +20,10 @@ import (
 // @Router /testapi/get-string-by-int/{some_id} [get]
 func GetStringByInt(ctx *gin.Context) {
 
-   for k, v := range ctx.Request.PostForm {
-      logging.Debugf("k:%v\n", k)
-      logging.Debugf("v:%v\n", v)
-    }
 
-
-
-
-	// data, _ := ioutil.ReadAll(ctx.Request.Body)
- //    fmt.Printf("ctx.Request.body: %v", string(data))
-	// ctx.JSON(http.StatusOK, string(data))
+	data, _ := ioutil.ReadAll(ctx.Request.Body)
+    fmt.Printf("ctx.Request.body: %v", string(data))
+	ctx.JSON(http.StatusOK, string(data))
 }
 
 // @Description get struct array by ID
