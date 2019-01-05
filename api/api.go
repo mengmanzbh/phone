@@ -21,7 +21,7 @@ import (
 func GetStringByInt(ctx *gin.Context) {
 
 	buf := make([]byte, 1024)
-	n, _ := c.Request.Body.Read(buf)
+	n, _ := ctx.Request.Body.Read(buf)
 	fmt.Println(string(buf[0:n]))
 
 	data, _ := ioutil.ReadAll(ctx.Request.Body)
