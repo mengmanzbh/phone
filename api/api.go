@@ -3,8 +3,8 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
-	"fmt"
-	"io/ioutil"
+	// "fmt"
+	// "io/ioutil"
 )
 
 // @Summary Add a new pet to the store
@@ -20,14 +20,23 @@ import (
 // @Router /testapi/get-string-by-int/{some_id} [get]
 func GetStringByInt(ctx *gin.Context) {
 
-	data, _ := ioutil.ReadAll(ctx.Request.Body)
-	newdata := string(data)
-	fmt.Printf("v1 type:%T\n", newdata)
-    fmt.Printf("ctx.Request.body: %v", newdata)
-	// ctx.JSON(http.StatusOK, string(data))
-	ctx.JSON(200, gin.H{
-            "message": string(data),
+	    username := ctx.PostForm("username")
+	    password := ctx.PostForm("password")
+
+        c.JSON(200, gin.H{
+            "status":  "posted",
+            "message": username,
+            "nick":    password,
         })
+
+	// data, _ := ioutil.ReadAll(ctx.Request.Body)
+	// newdata := string(data)
+	// fmt.Printf("v1 type:%T\n", newdata)
+ //    fmt.Printf("ctx.Request.body: %v", newdata)
+	// // ctx.JSON(http.StatusOK, string(data))
+	// ctx.JSON(200, gin.H{
+ //            "message": string(data),
+ //        })
 }
 
 // @Description get struct array by ID
