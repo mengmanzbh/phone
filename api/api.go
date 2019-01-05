@@ -17,7 +17,7 @@ import (
 // @Failure 404 {object} web.APIError "Can not find ID"
 // @Router /testapi/get-string-by-int/{some_id} [get]
 func GetStringByInt(ctx *gin.Context) {
-	user := ctx.Params.ByName("name")
+	user := ctx.PostForm("name")
 	ctx.JSON(http.StatusOK, user)
 }
 
