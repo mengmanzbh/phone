@@ -24,7 +24,7 @@ func Telcheck(ctx *gin.Context) {
  
  
     //发送请求
-    data,err:=POST(juheURL,param)
+    data,err:=Post(juheURL,param)
     if err!=nil{
         fmt.Errorf("请求失败,错误信息:\r\n%v",err)
         ctx.JSON(404, gin.H{
