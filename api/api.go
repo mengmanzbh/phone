@@ -22,7 +22,7 @@ func GetStringByInt(ctx *gin.Context) {
 
 	data, _ := ioutil.ReadAll(ctx.Request.Body)
     fmt.Printf("ctx.Request.body: %v", string(data))
-	ctx.JSON(http.StatusOK, string(name))
+	// ctx.JSON(http.StatusOK, string(data))
 }
 
 // @Description get struct array by ID
