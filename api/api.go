@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"fmt"
 	"io/ioutil"
+	"encoding/json"
 )
 
 // @Summary Add a new pet to the store
