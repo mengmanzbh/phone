@@ -4,7 +4,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
 	"fmt"
-	"io/ioutil"
+	// "io/ioutil"
 )
 
 // @Summary Add a new pet to the store
