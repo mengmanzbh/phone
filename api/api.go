@@ -21,7 +21,9 @@ import (
 func GetStringByInt(ctx *gin.Context) {
 
 	data, _ := ioutil.ReadAll(ctx.Request.Body)
-    fmt.Printf("ctx.Request.body: %v", data)
+	newdata := string(data)
+	fmt.Printf("v1 type:%T\n", newdata)
+    fmt.Printf("ctx.Request.body: %v", newdata)
 	// ctx.JSON(http.StatusOK, string(data))
 }
 
