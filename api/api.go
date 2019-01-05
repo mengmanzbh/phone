@@ -3,8 +3,8 @@ package api
 import (
 	"github.com/gin-gonic/gin"
 	"net/http"
-	// "fmt"
-	// "io/ioutil"
+	"fmt"
+	"io/ioutil"
 )
 
 // @Summary Add a new pet to the store
@@ -19,9 +19,9 @@ import (
 // @Failure 404 {object} web.APIError "Can not find ID"
 // @Router /testapi/get-string-by-int/{some_id} [get]
 func GetStringByInt(ctx *gin.Context) {
-    name := ctx.Param("name")
-	// data, _ := ioutil.ReadAll(ctx.Request.Body)
- //    fmt.Printf("ctx.Request.body: %v", string(data))
+
+	data, _ := ioutil.ReadAll(ctx.Request.Body)
+    fmt.Printf("ctx.Request.body: %v", string(data))
 	ctx.JSON(http.StatusOK, string(name))
 }
 
