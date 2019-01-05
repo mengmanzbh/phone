@@ -5,8 +5,6 @@ import (
 
 	_ "phone/docs"
 	"github.com/gin-gonic/gin"
-	"github.com/swaggo/gin-swagger"
-	"github.com/swaggo/gin-swagger/swaggerFiles"
 )
 
 func main() {
