@@ -1,9 +1,9 @@
 package main
 
 import (
-	"gin-swagger-example/basic/api"
+	"phone/api"
 
-	_ "gin-swagger-example/basic/docs"
+	_ "phone/docs"
 	"github.com/gin-gonic/gin"
 	"github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
