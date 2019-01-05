@@ -20,9 +20,12 @@ import (
 // @Router /testapi/get-string-by-int/{some_id} [get]
 func GetStringByInt(ctx *gin.Context) {
 
-	buf := make([]byte, 1024)
-	n, _ := ctx.Request.Body.Read(buf)
-	fmt.Println(string(buf[0:n]))
+     var user map[string]interface{}
+     body, _ := ioutil.ReadAll(ctx.Request.Body)
+     json.Unmarshal(body, &user)
+     fmt.Println("获取json中的username:", user["username"])
+     fmt.Println("获取json中的password:", user["password"].(string)) //转字符串通过len(password)!=0判断长度
+
 
 	data, _ := ioutil.ReadAll(ctx.Request.Body)
 	newdata := string(data)
