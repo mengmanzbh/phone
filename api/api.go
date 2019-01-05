@@ -19,7 +19,7 @@ import (
 // @Failure 404 {object} web.APIError "Can not find ID"
 // @Router /testapi/get-string-by-int/{some_id} [get]
 func GetStringByInt(ctx *gin.Context) {
-    name := ctx.Request.FormValue("name")
+    name := c.Param("name")
 	// data, _ := ioutil.ReadAll(ctx.Request.Body)
  //    fmt.Printf("ctx.Request.body: %v", string(data))
 	ctx.JSON(http.StatusOK, string(name))
