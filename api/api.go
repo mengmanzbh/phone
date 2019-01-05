@@ -8,25 +8,28 @@ import (
 )
 
 // @Summary 检测手机号码是否能充值
-// @Description get string by ID
-// @ID get-string-by-int
+// @Description 检查手机号码是否能充值
+// @ID phoneno
 // @Accept json
 // @Produce json
-// @Param some_id path int true "Some ID"
-// @Param some_id body web.Pet true "Some ID"
-// @Success 200 {string} string "ok"
-// @Failure 400 {object} web.APIError "We need ID!"
-// @Failure 404 {object} web.APIError "Can not find ID"
-// @Router /testapi/get-string-by-int/{some_id} [get]
+// @Param phoneno path int true "phoneno"
+// @Param cardnum body web.Pet true "cardnum"
+// @Success 200 {string} string "手机可以充值"
+// @Failure 400 {string} web.APIError "手机号码必须输入"
+// @Router /phoneapi/Telcheck [POST]
 func Telcheck(ctx *gin.Context) {
+	 // phoneno	是	string	手机号码
+     // cardnum	是	string	充值金额,目前可选：1、2、5、10、20、30、50、100、200、300、500
+     // key	是	string	在个人中心->我的数据,接口名称上方查看
 
-	    username := ctx.PostForm("username")
-	    password := ctx.PostForm("password")
+	    phoneno := ctx.PostForm("phoneno")
+	    cardnum := ctx.PostForm("cardnum")
+	    key := ctx.PostForm("key")
 
         ctx.JSON(200, gin.H{
             "status":  "posted",
-            "message": username,
-            "nick":    password,
+            "message": phoneno,
+            "nick":    cardnum,
         })
 
 }

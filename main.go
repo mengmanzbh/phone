@@ -26,10 +26,7 @@ import (
 func main() {
 	r := gin.New()
 	r.POST("/phoneapi/", api.Telcheck)
-	r.GET("/testapi/get-struct-array-by-string/:some_id", api.GetStructArrayByString)
-	r.POST("/testapi/upload", api.Upload)
 
-	// http://localhost:8080/swagger/index.html
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	r.Run()
 }
