@@ -7,7 +7,7 @@ import (
 	// "io/ioutil"
 )
 
-// @Summary Add a new pet to the store
+// @Summary 检测手机号码是否能充值
 // @Description get string by ID
 // @ID get-string-by-int
 // @Accept json
@@ -18,7 +18,7 @@ import (
 // @Failure 400 {object} web.APIError "We need ID!"
 // @Failure 404 {object} web.APIError "Can not find ID"
 // @Router /testapi/get-string-by-int/{some_id} [get]
-func GetStringByInt(ctx *gin.Context) {
+func Telcheck(ctx *gin.Context) {
 
 	    username := ctx.PostForm("username")
 	    password := ctx.PostForm("password")
@@ -29,14 +29,6 @@ func GetStringByInt(ctx *gin.Context) {
             "nick":    password,
         })
 
-	// data, _ := ioutil.ReadAll(ctx.Request.Body)
-	// newdata := string(data)
-	// fmt.Printf("v1 type:%T\n", newdata)
- //    fmt.Printf("ctx.Request.body: %v", newdata)
-	// // ctx.JSON(http.StatusOK, string(data))
-	// ctx.JSON(200, gin.H{
- //            "message": string(data),
- //        })
 }
 
 // @Description get struct array by ID

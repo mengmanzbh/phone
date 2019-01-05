@@ -25,7 +25,7 @@ import (
 // @BasePath /v2
 func main() {
 	r := gin.New()
-	r.POST("/phoneapi/", api.GetStringByInt)
+	r.POST("/phoneapi/", api.Telcheck)
 	r.GET("/testapi/get-struct-array-by-string/:some_id", api.GetStructArrayByString)
 	r.POST("/testapi/upload", api.Upload)
 
