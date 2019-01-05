@@ -7,15 +7,13 @@ import (
 	// "io/ioutil"
 )
 
-// @Summary 检测手机号码是否能充值
 // @Description 检查手机号码是否能充值
-// @ID phoneno
 // @Accept json
 // @Produce json
-// @Param phoneno path int true "phoneno"
-// @Param cardnum body web.Pet true "cardnum"
+// @Param phoneno path string true "phoneno"
+// @Param phoneno path string true "phoneno"
 // @Success 200 {string} string "手机可以充值"
-// @Failure 400 {string} web.APIError "手机号码必须输入"
+// @Failure 400 {string} string "手机号码必须输入"
 // @Router /phoneapi/Telcheck [POST]
 func Telcheck(ctx *gin.Context) {
 	 // phoneno	是	string	手机号码
