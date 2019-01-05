@@ -4,7 +4,6 @@ import (
 	"github.com/gin-gonic/gin"
 	"net/http"
     "io/ioutil"
-    "net/http"
     "net/url"
     "fmt"
     "encoding/json"
@@ -48,7 +47,7 @@ func Telcheck(ctx *gin.Context) {
             "code": "200",
             "message": netReturn["reason"],
             })
-        	
+
         }
     }
 
