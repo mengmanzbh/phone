@@ -7,18 +7,8 @@ import (
 	// "io/ioutil"
 )
 
-// @Description 检查手机号码是否能充值
-// @Accept json
-// @Produce json
-// @Param phoneno path string true "phoneno"
-// @Param phoneno path string true "phoneno"
-// @Success 200 {string} string "手机可以充值"
-// @Failure 400 {string} string "手机号码必须输入"
-// @Router /phoneapi/Telcheck [POST]
+// 检测手机号码是否能充值
 func Telcheck(ctx *gin.Context) {
-	 // phoneno	是	string	手机号码
-     // cardnum	是	string	充值金额,目前可选：1、2、5、10、20、30、50、100、200、300、500
-     // key	是	string	在个人中心->我的数据,接口名称上方查看
 
 	    phoneno := ctx.PostForm("phoneno")
 	    cardnum := ctx.PostForm("cardnum")
@@ -32,42 +22,15 @@ func Telcheck(ctx *gin.Context) {
         })
 
 }
-
-// @Description get struct array by ID
-// @ID get-struct-array-by-string
-// @Accept json
-// @Produce json
-// @Param some_id path string true "Some ID"
-// @Param offset query int true "Offset"
-// @Param limit query int true "Offset"
-// @Success 200 {string} string "ok"
-// @Failure 400 {object} web.APIError "We need ID!"
-// @Failure 404 {object} web.APIError "Can not find ID"
-// @Router /testapi/get-struct-array-by-string/{some_id} [get]
-func GetStructArrayByString(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, "GetStructArrayByString.")
+// 根据手机号和面值查询商品
+func Telquery(ctx *gin.Context) {
+	
 }
-
-// @Summary Upload file
-// @Description Upload file
-// @ID file.upload
-// @Accept multipart/form-data
-// @Produce json
-// @Param file formData file true "this is a test file"
-// @Success 200 {string} string "ok"
-// @Failure 400 {object} web.APIError "We need ID!"
-// @Failure 404 {object} web.APIError "Can not find ID"
-// @Router /file/upload [post]
-func Upload(ctx *gin.Context) {
-	ctx.JSON(http.StatusOK, "Upload")
+// 手机直充接口
+func Onlineorder(ctx *gin.Context) {
+	
 }
-
-// @Summary use Anonymous field
-// @Success 200 {object} web.RevValue "ok"
-func AnonymousField() {
-
-}
-
-type Pet3 struct {
-	ID int `json:"id"`
+// 订单状态查询
+func Ordersta(ctx *gin.Context) {
+	
 }
