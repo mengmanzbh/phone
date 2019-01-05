@@ -1,83 +1,35 @@
 package main
 
 import (
-	"phone/controller"
-	_ "phone/docs"
-	"phone/httputil"
+	"gin-swagger-example/basic/api"
 
+	_ "gin-swagger-example/basic/docs"
 	"github.com/gin-gonic/gin"
-	"github.com/pkg/errors"
 	"github.com/swaggo/gin-swagger"
 	"github.com/swaggo/gin-swagger/swaggerFiles"
-	"net/http"
 )
 
-// @title Swagger 示例API
+// @title Swagger Example API
 // @version 1.0
-// @description 这是一个http server示例，用来演示swagger文档
-// @termsOfService API服务条款:http://swagger.io/terms
+// @description This is a sample server Petstore server.
+// @termsOfService http://swagger.io/terms/
 
-// @contact.name 公开的API的联系信息:
+// @contact.name API Support
 // @contact.url http://www.swagger.io/support
 // @contact.email support@swagger.io
 
-// @licenes.name Apache 2.0
-// @licenes.url http://www.apache.org/licenses/LICENSE-2.0.html
+// @license.name Apache 2.0
+// @license.url http://www.apache.org/licenses/LICENSE-2.0.html
 
-// @host localhost:8080
-// @BasePath /api/v1
-
-//@securityDefinitions.basic.BasicAuth
-
-// @securityDefinitions.apikey ApiKeyAuth
-// @in header
-// @name Authorization
-
-// @securitydeginitions.oauth2.application OAuth2Application
-// @tokenUrl https://example.com/oauth/token
-// @scope.write Grants write access
-// @scope.admin Grants read and write access to administrative information
-
-// @securitydefinitions oauth2.password OAuth2Password
-// @tokenUrl https://example.com/oauth.token
-// @scope.read Grants read access
-// @scope.write Grants write access
-// @scope.admin Grants read and write access to administrative information
-
-// @securitydefinitions.oauth2.accessCode OAuth2AccessCode
-// @tokenUrl https://example.com/oauth/token
-// @authorizationUrl https://example.com/oauth/authorize
-// @scope.admin Grants read and write access to administrative information
-
+// @host petstore.swagger.io
+// @BasePath /v2
 func main() {
-	r := gin.Default()
+	r := gin.New()
+	r.GET("/testapi/get-string-by-int/:some_id", api.GetStringByInt)
+	r.GET("/testapi/get-struct-array-by-string/:some_id", api.GetStringByInt)
+	r.POST("/testapi/upload", api.Upload)
 
-	c := controller.NewController()
-
-	v1 := r.Group("/api/v1")
-	{
-		accounts := v1.Group("/accounts")
-		{
-			accounts.GET(":id", c.ShowAccount)
-			accounts.GET("", c.ListAccounts)
-			accounts.POST("", c.AddAccount)
-			accounts.DELETE(":id", c.DeleteAccount)
-			accounts.PATCH(":id", c.UpdateAccount)
-			accounts.POST(":id/images", c.UploadAccountImage)
-		}
-
-	}
 	// http://localhost:8080/swagger/index.html
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	r.Run(":8080")
-}
-
-func auth() gin.HandlerFunc {
-	return func(context *gin.Context) {
-		if len(context.GetHeader("Authorization")) == 0 {
-			httputil.NewError(context, http.StatusUnauthorized, errors.New("Authorization is required Header"))
-			context.Abort()
-		}
-		context.Next()
-	}
+	r.Run()
 }
