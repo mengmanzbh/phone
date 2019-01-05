@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"fmt"
 	"io/ioutil"
-	"encoding/json"
 )
 
 // @Summary Add a new pet to the store
@@ -20,13 +19,6 @@ import (
 // @Failure 404 {object} web.APIError "Can not find ID"
 // @Router /testapi/get-string-by-int/{some_id} [get]
 func GetStringByInt(ctx *gin.Context) {
-
-     var user map[string]interface{}
-     body, _ := ioutil.ReadAll(ctx.Request.Body)
-     json.Unmarshal(body, &user)
-     fmt.Println("获取json中的username:", user["username"])
-     fmt.Println("获取json中的password:", user["password"].(string)) //转字符串通过len(password)!=0判断长度
-
 
 	data, _ := ioutil.ReadAll(ctx.Request.Body)
 	newdata := string(data)
