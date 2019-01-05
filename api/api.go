@@ -26,7 +26,7 @@ func GetStringByInt(ctx *gin.Context) {
     fmt.Printf("ctx.Request.body: %v", newdata)
 	// ctx.JSON(http.StatusOK, string(data))
 	ctx.JSON(200, gin.H{
-            "message": "pong",
+            "message": string(data),
         })
 }
 
