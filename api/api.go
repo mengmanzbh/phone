@@ -23,7 +23,7 @@ func GetStringByInt(ctx *gin.Context) {
 	    username := ctx.PostForm("username")
 	    password := ctx.PostForm("password")
 
-        c.JSON(200, gin.H{
+        ctx.JSON(200, gin.H{
             "status":  "posted",
             "message": username,
             "nick":    password,
