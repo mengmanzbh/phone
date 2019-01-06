@@ -59,19 +59,19 @@ func Telcheck(ctx *gin.Context) {
 }
 // 根据手机号和面值查询商品
 func Telquery(ctx *gin.Context) {
-	phoneno := ctx.PostForm("phoneno")
-    cardnum := ctx.PostForm("cardnum")
+	// phoneno := ctx.PostForm("phoneno")
+ //    cardnum := ctx.PostForm("cardnum")
 }
 // 手机直充接口
 func Onlineorder(ctx *gin.Context) {
-	phoneno := ctx.PostForm("phoneno")
-    cardnum := ctx.PostForm("cardnum")
-    orderid := ctx.PostForm("orderid")
-    sign := ctx.PostForm("sign")
+	// phoneno := ctx.PostForm("phoneno")
+ //    cardnum := ctx.PostForm("cardnum")
+ //    orderid := ctx.PostForm("orderid")
+ //    sign := ctx.PostForm("sign")
 }
 // 订单状态查询
 func Ordersta(ctx *gin.Context) {
-	orderid := ctx.PostForm("orderid")
+	// orderid := ctx.PostForm("orderid")
 }
 // get 网络请求
 func Get(apiURL string,params url.Values)(rs[]byte ,err error){
