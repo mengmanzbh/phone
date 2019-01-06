@@ -8,6 +8,7 @@ import (
     "encoding/json"
 )
 const APPKEY = "f17e30d841c5b17dbc00605a556d549a" //您申请的APPKEY
+const OpenID = "JH24c5c602f7d064b5bd591d3eff1efe8e" //OpenID在个人中心查询
 // 检测手机号码是否能充值
 func Telcheck(ctx *gin.Context) {
     //获取请求参数
@@ -78,22 +79,24 @@ func Telquery(ctx *gin.Context) {
 }
 // 手机直充接口
 func Onlineorder(ctx *gin.Context) {
-	// phoneno := ctx.PostForm("phoneno")
- //    cardnum := ctx.PostForm("cardnum")
- //    orderid := utils.GetRandomString(6)
- //    sign := ctx.PostForm("sign")
+	phoneno := ctx.PostForm("phoneno")
+    cardnum := ctx.PostForm("cardnum")
+    orderid := utils.GetRandomString(6)
         //请求地址
     juheURL :="http://op.juhe.cn/ofpay/mobile/onlineorder"
  
     //初始化参数
     param:=url.Values{}
- 
+    
+    //校验值，md5(OpenID+key+phoneno+cardnum+orderid)
+    sign := utils.MD5(OpenID+APPKEY+phoneno+cardnum+orderid)
+
     //配置请求参数,方法内部已处理urlencode问题,中文参数可以直接传参
-    param.Set("phoneno","") //手机号码
-    param.Set("cardnum","") //充值金额,目前可选：5、10、20、30、50、100、300
-    param.Set("orderid","") //商家订单号，8-32位字母数字组合
+    param.Set("phoneno",phoneno) //手机号码
+    param.Set("cardnum",cardnum) //充值金额,目前可选：5、10、20、30、50、100、300
+    param.Set("orderid",orderid) //商家订单号，8-32位字母数字组合
     param.Set("key",APPKEY) //应用APPKEY(应用详细页查询)
-    param.Set("sign","") //校验值，md5(OpenID+key+phoneno+cardnum+orderid)，OpenID在个人中心查询
+    param.Set("sign",sign) //校验值，md5(OpenID+key+phoneno+cardnum+orderid)，OpenID在个人中心查询
  
  
     //发送请求
