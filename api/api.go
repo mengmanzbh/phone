@@ -39,28 +39,43 @@ func Telcheck(ctx *gin.Context) {
             "message": netReturn["reason"],
             "result":netReturn["result"],
         })
-
-
-        // if netReturn["error_code"].(float64)==0{
-        //     fmt.Printf("接口返回reason字段是:\r\n%v",netReturn["reason"])
-        //     //返回给前端
-        //     ctx.JSON(200, gin.H{
-        //     "code": "200",
-        //     "message": netReturn["reason"],
-        //     })
-        // }else{
-        //    ctx.JSON(400, gin.H{
-        //     "code": "400",
-        //     "message": netReturn["reason"],
-        //     })
-        // }
     }
 
 }
 // 根据手机号和面值查询商品
 func Telquery(ctx *gin.Context) {
-	// phoneno := ctx.PostForm("phoneno")
- //    cardnum := ctx.PostForm("cardnum")
+	phoneno := ctx.PostForm("phoneno")
+    cardnum := ctx.PostForm("cardnum")
+        //请求地址
+    juheURL :="http://op.juhe.cn/ofpay/mobile/telquery"
+ 
+    //初始化参数
+    param:=url.Values{}
+ 
+    //配置请求参数,方法内部已处理urlencode问题,中文参数可以直接传参
+    param.Set("phoneno",phoneno) //手机号码
+    param.Set("cardnum",cardnum) //充值金额,目前可选：5、10、20、30、50、100、300
+    param.Set("key",APPKEY) //应用APPKEY(应用详细页查询)
+ 
+ 
+    //发送请求
+    data,err:=Post(juheURL,param)
+    if err!=nil{
+        fmt.Errorf("请求失败,错误信息:\r\n%v",err)
+        ctx.JSON(404, gin.H{
+            "code": "404",
+            "message": err,
+            })
+    }else{
+        var netReturn map[string]interface{}
+        json.Unmarshal(data,&netReturn)
+
+        ctx.JSON(200, gin.H{
+            "error_code": netReturn["error_code"],
+            "message": netReturn["reason"],
+            "result":netReturn["result"],
+        })
+    }
 }
 // 手机直充接口
 func Onlineorder(ctx *gin.Context) {
