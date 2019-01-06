@@ -2,11 +2,10 @@ package api
 
 import (
 	"github.com/gin-gonic/gin"
-	"net/http"
     "io/ioutil"
     "net/url"
     "fmt"
-    "utils"
+    "phone/utils"
     "encoding/json"
 )
 const APPKEY = "f17e30d841c5b17dbc00605a556d549a" //您申请的APPKEY
