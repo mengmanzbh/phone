@@ -1,9 +1,7 @@
 package api
 
 import (
-	"github.com/gin-gonic/gin"
-    "io/ioutil"
-    "net/url"
+	"github.com/gin-gonic/gin" 
     "fmt"
     "phone/utils"
     "encoding/json"
