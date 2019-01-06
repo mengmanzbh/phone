@@ -33,21 +33,27 @@ func Telcheck(ctx *gin.Context) {
     }else{
         var netReturn map[string]interface{}
         json.Unmarshal(data,&netReturn)
-        if netReturn["error_code"].(float64)==0{
-            fmt.Printf("接口返回reason字段是:\r\n%v",netReturn["reason"])
-            //返回给前端
-            ctx.JSON(200, gin.H{
-            "code": "200",
-            "message": netReturn["reason"],
-            })
 
-        }else{
-           ctx.JSON(400, gin.H{
-            "code": "400",
+        ctx.JSON(200, gin.H{
+            "error_code": netReturn["error_code"],
             "message": netReturn["reason"],
-            })
+            "result":netReturn["result"],
+        })
 
-        }
+
+        // if netReturn["error_code"].(float64)==0{
+        //     fmt.Printf("接口返回reason字段是:\r\n%v",netReturn["reason"])
+        //     //返回给前端
+        //     ctx.JSON(200, gin.H{
+        //     "code": "200",
+        //     "message": netReturn["reason"],
+        //     })
+        // }else{
+        //    ctx.JSON(400, gin.H{
+        //     "code": "400",
+        //     "message": netReturn["reason"],
+        //     })
+        // }
     }
 
 }
