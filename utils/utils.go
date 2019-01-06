@@ -6,6 +6,7 @@ import (
     "net/http"
     "net/url"
     "io/ioutil"
+    "fmt"
 )
 
 // 随机生成置顶位数的大写字母和数字的组合
