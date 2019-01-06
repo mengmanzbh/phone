@@ -7,6 +7,8 @@ import (
     "net/url"
     "io/ioutil"
     "fmt"
+    "crypto/md5"
+    "encoding/hex"
 )
 
 // 生成32位MD5
