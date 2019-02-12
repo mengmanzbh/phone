@@ -154,3 +154,28 @@ func Ordersta(ctx *gin.Context) {
     }
 
 }
+
+// 状态回调配置
+func Ordersta(ctx *gin.Context) {
+   //请求地址
+    juheURL :="充值接口测试完毕，联系在线客服进行回调配置"
+ 
+    //初始化参数
+    param:=url.Values{}
+ 
+    //配置请求参数,方法内部已处理urlencode问题,中文参数可以直接传参
+ 
+ 
+    //发送请求
+    data,err:=Post(juheURL,param)
+    if err!=nil{
+        fmt.Errorf("请求失败,错误信息:\r\n%v",err)
+    }else{
+        var netReturn map[string]interface{}
+        json.Unmarshal(data,&netReturn)
+        if netReturn["error_code"].(float64)==0{
+            fmt.Printf("接口返回result字段是:\r\n%v",netReturn["result"])
+        }
+    }
+    
+}
