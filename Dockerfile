@@ -13,7 +13,7 @@ RUN go get github.com/go-sql-driver/mysql
 COPY . /go/src/
 
 
-WORKDIR /go/src/phone
+WORKDIR /go/src/mobile
 RUN go build -o main main.go
 CMD ["./main"]
 # Application image.
