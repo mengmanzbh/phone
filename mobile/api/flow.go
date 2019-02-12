@@ -6,7 +6,7 @@ import (
     "net/url"
     "encoding/json"
 )
-
+const FlowAPPKEY = "f17e30d841c5b17dbc00605a556d549a" //您申请的APPKEY
 // 全部流量套餐列表
 func Flowlist(ctx *gin.Context) {
     //请求地址
@@ -14,7 +14,7 @@ func Flowlist(ctx *gin.Context) {
     //初始化参数
     param:=url.Values{}
     //配置请求参数,方法内部已处理urlencode问题,中文参数可以直接传参
-    param.Set("key",APPKEY) //应用APPKEY(应用详细页查询)
+    param.Set("key",FlowAPPKEY) //应用APPKEY(应用详细页查询)
  
     //发送请求
     data,err:=utils.Post(juheURL,param)
