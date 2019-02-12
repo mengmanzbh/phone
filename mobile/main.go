@@ -3,7 +3,7 @@ package main
 import (
 	"mobile/api"
 
-	_ "phone/docs"
+	_ "mobile/docs"
 	"github.com/gin-gonic/gin"
 )
 
