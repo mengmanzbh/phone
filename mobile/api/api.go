@@ -156,7 +156,7 @@ func Ordersta(ctx *gin.Context) {
 }
 
 // 状态回调配置
-func Ordersta(ctx *gin.Context) {
+func SetPush(ctx *gin.Context) {
    //请求地址
     juheURL :="充值接口测试完毕，联系在线客服进行回调配置"
  
