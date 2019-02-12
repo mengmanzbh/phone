@@ -13,6 +13,7 @@ func main() {
 	r.POST("/mobile/telquery", api.Telquery)
 	r.POST("/mobile/onlineorder", api.Onlineorder)
 	r.POST("/mobile/ordersta", api.Ordersta)
+	r.POST("/flow/list", api.Flowlist)
 
 	r.Run()
 }
